@@ -1,0 +1,76 @@
+
+Part 1: Data Structure Implementations
+
+Stack: The Stack class implements a stack data structure using an array. - The push method adds an element to the top of the stack by appending it to the end of the array. - The pop method removes and returns the top element from the stack by removing the last element from the array. If the stack is empty, it returns an "Underflow" message. - The peek method returns the top element without removing it from the stack. - The isEmpty method checks if the stack is empty by checking if the length of the array is zero. - The printStack method returns a string representation of the stack elements.
+
+Queue: The Queue class implements a queue data structure using an array. - The enqueue method adds an element to the rear of the queue by appending it to the end of the array. - The dequeue method removes and returns the front element from the queue by removing the first element from the array using the shift method. If the queue is empty, it returns an "Underflow" message. - The peek method returns the front element without removing it from the queue. If the queue is empty, it returns an "Underflow" message. - The isEmpty method checks if the queue is empty by checking if the length of the array is zero. - The printQueue method returns a string representation of the queue elements.
+
+Binary Tree: The BinaryTree class implements a binary tree data structure. - The insertNode method inserts a new node with the given value into the binary tree by calling the insertNodeHelpe<wbr>r helper function recursively. - The insertNodeHelpe<wbr>r helper function recursively inserts a new node into the binary tree by comparing its value with the current node's value and traversing to the left or right subtree accordingly. - The searchNode method searches for a node with the given value in the binary tree by calling the searchNodeHelpe<wbr>r helper function recursively. - The searchNodeHelpe<wbr>r helper function recursively searches for a node with the given value by comparing it with the current node's value and traversing to the left or right subtree accordingly. - The traverseInOrder<wbr>, traversePreOrde<wbr>r, and traversePostOrd<wbr>er methods traverse the binary tree in-order, pre-order, and post-order, respectively, by calling their respective helper functions recursively. - The helper functions for traversal (traverseInOrde<wbr>rHelper, traversePreOrde<wbr>rHelper, and traversePostOrd<wbr>erHelper) recursively traverse the binary tree and append the node values to an array.
+
+Graph: The Graph class implements a graph data structure using an adjacency list representation. - The addVertex method adds a new vertex to the graph by creating an empty list in the adjacency list for that vertex. - The addEdge method adds an edge between two vertices by adding each vertex to the other's neighbor list in the adjacency list. - The dfs method performs a Depth-First Search (DFS) traversal of the graph by calling the dfsHelper helper function and returning the set of visited vertices. - The dfsHelper helper function recursively traverses the graph in a depth-first manner, marking visited vertices and processing them. - The bfs method performs a Breadth-First Search (BFS) traversal of the graph by using a queue to process vertices level by level, marking visited vertices and processing them.
+
+Linked List: The LinkedList class implements a linked list data structure. - The insert method inserts a new node with the given value at the specified index in the linked list. - The delete method deletes the node at the specified index from the linked list. - The search method searches for a node with the given value in the linked list and returns true if found, false otherwise. - The printList method returns a string representation of the linked list elements.
+
+Part 2: Algorithmic Problems
+
+The MinMaxStack class implements a stack data structure that supports constant-time retrieval of the minimum and maximum elements. It uses three arrays: stack to store the main stack elements, minStack to keep track of the minimum elements, and maxStack to keep track of the maximum elements.
+The push method adds an element to the main stack and updates the minStack and maxStack accordingly. If the new element is smaller than or equal to the current minimum, it is pushed to the minStack. If the new element is greater than or equal to the current maximum, it is pushed to the maxStack.
+The pop method removes and returns the top element from the main stack. It also updates the minStack and maxStack by removing the top element if it is equal to the current minimum or maximum, respectively.
+The getMin method returns the minimum element from the minStack. If the minStack is empty, it returns an error message.
+The getMax method returns the maximum element from the maxStack. If the maxStack is empty, it returns an error message.
+
+The isBinarySearchT<wbr>ree function checks if a given binary tree is a valid Binary Search Tree (BST). It calls the isBSTHelper helper function with the root node and the minimum and maximum possible values (-Infinity and Infinity, respectively).
+
+The isBSTHelper function recursively checks if each node in the binary tree satisfies the BST property:
+If the current node is null, it returns true (an empty tree is a valid BST).
+If the node's value is less than the minimum or greater than the maximum, it returns false (the node violates the BST property).
+Otherwise, it recursively checks the left subtree with the updated minimum value (current minimum) and the maximum value (node's value - 1), and the right subtree with the updated minimum value (node's value + 1) and the maximum value (current maximum).
+If all nodes satisfy the BST property, the function returns true; otherwise, it returns false.
+
+The shortestPathDij<wbr>kstra function implements Dijkstra's algorithm to find the shortest path between two vertices in a weighted graph. It takes a graph, a start vertex, and an end vertex as input, and returns the shortest distance between them.
+The algorithm works as follows:
+Initialize a map distances to store the shortest distances from the start vertex to all other vertices, initially set to Infinity.
+Initialize a set visited to keep track of visited vertices.
+Initialize a priority queue pq to efficiently explore vertices based on their distances.
+Set the distance of the start vertex to 0 in distances and enqueue it with distance 0 in pq.
+While the priority queue is not empty:
+Dequeue the vertex with the smallest distance from pq.
+If the vertex has already been visited, skip it.
+Mark the vertex as visited.
+If the vertex is the end vertex, return its distance.
+For each unvisited neighbor of the vertex:
+Calculate the new distance to the neighbor.
+If the new distance is shorter than the current distance in distances, update the distance and enqueue the neighbor with the new distance in pq.
+If the end vertex is not reachable, return Infinity.
+
+The shortestPathBFS<wbr> function implements the Breadth-First Search (BFS) algorithm to find the shortest path between two vertices in an unweighted graph. It takes a graph, a start vertex, and an end vertex as input, and returns the shortest distance between them.
+The algorithm works as follows:
+Initialize a map distances to store the shortest distances from the start vertex to all other vertices, initially set to Infinity.
+Initialize a set visited to keep track of visited vertices.
+Initialize a queue with the start vertex and its distance 0.
+Set the distance of the start vertex to 0 in distances.
+While the queue is not empty:
+Dequeue a vertex from the queue.
+If the vertex has already been visited, skip it.
+Mark the vertex as visited.
+If the vertex is the end vertex, return its distance.
+For each unvisited neighbor of the vertex:
+Calculate the new distance to the neighbor.
+If the new distance is shorter than the current distance in distances, update the distance and enqueue the neighbor with the new distance in the queue.
+If the end vertex is not reachable, return Infinity.
+
+The PriorityQueue class is an implementation of a priority queue data structure used by Dijkstra's algorithm. It has the following methods:
+enqueue(vertex,<wbr> distance): Adds a new vertex and its distance to the queue and sorts the queue based on distances.
+dequeue(): Removes and returns the vertex with the smallest distance from the queue.
+sort(): Sorts the queue in ascending order of distances.
+isEmpty(): Checks if the queue is empty.
+
+The hasCycle function checks if a given linked list has a cycle or not. It uses the Floyd's cycle-finding algorithm, also known as the "tortoise and hare" algorithm.
+The algorithm works as follows:
+If the linked list is empty or has only one node, return false (no cycle).
+Initialize two pointers, slow and fast, pointing to the head of the linked list.
+Move the slow pointer one step at a time, and the fast pointer two steps at a time.
+If the fast pointer or the next node of the fast pointer is null, it means the end of the list has been reached, so return false (no cycle).
+If the slow and fast pointers meet at some point, it means there is a cycle in the linked list, so return true.
+If the loop completes without the slow and fast pointers meeting, it means there is no cycle, so return false.
+The algorithm works because if there is a cycle, the fast pointer will eventually catch up with the slow pointer, as it moves twice as fast. If there is no cycle, the fast pointer will reach the end of the list before catching up with the slow pointer.
